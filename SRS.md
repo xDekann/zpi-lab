@@ -225,6 +225,56 @@
 
 ---
 
+### WF-ACCOUNT: Konto użytkownika (rejestracja) oraz zakup VIP
+
+**Opis:** System umożliwia użytkownikowi rejestrację i korzystanie z konta, aby zapisywać ustawienia (np. warianty planu) oraz wykupić dostęp VIP. Po zakupie VIP system nadaje użytkownikowi status VIP i udostępnia funkcje premium (np. dodatkowe warianty tras).
+
+**Historyjka Użytkownika:**
+- Jako użytkownik,
+- chcę móc założyć konto,
+- aby mieć dostęp do funkcji wymagających identyfikacji użytkownika oraz móc wykupić VIP.
+
+**Cel Biznesowy:** Umożliwienie personalizacji i monetyzacji aplikacji (VIP).
+
+**Warunki Wstępne:** Użytkownik ma dostęp do ekranu rejestracji/logowania i aplikacja ma dostęp do internetu.
+
+**Warunki Końcowe:** Użytkownik ma utworzone konto (oraz opcjonalnie aktywny status VIP), który jest widoczny w aplikacji.
+
+**Kryteria Akceptacji:**
+
+- **WF-ACCOUNT-01: Rejestracja użytkownika (Scenariusz Główny)**
+    - *Given:* Użytkownik nie jest zalogowany i widzi formularz rejestracji.
+    - *When:* Użytkownik poda wymagane dane rejestracyjne (np. e-mail i hasło) i zatwierdzi rejestrację.
+    - *Then:* System utworzy konto użytkownika.
+    - *And:* System zaloguje użytkownika automatycznie lub umożliwi logowanie bez ponownego podawania danych.
+    - *And:* System wyświetli potwierdzenie poprawnej rejestracji.
+
+- **WF-ACCOUNT-02: Rejestracja z użyciem zajętego adresu e-mail (Scenariusz Wyjątkowy)**
+    - *Given:* Użytkownik próbuje zarejestrować konto na adres e-mail, który już istnieje w systemie.
+    - *When:* Użytkownik zatwierdzi rejestrację.
+    - *Then:* System wyświetli komunikat o konflikcie (np. „Konto z tym e-mailem już istnieje”).
+    - *And:* System zaproponuje przejście do logowania lub resetu hasła (jeśli przewidziane w MVP).
+
+- **WF-ACCOUNT-03: Zakup VIP (Scenariusz Główny)**
+    - *Given:* Użytkownik jest zalogowany i nie posiada statusu VIP.
+    - *When:* Użytkownik wybierze opcję „Kup VIP” i zakończy proces płatności.
+    - *Then:* System oznaczy konto użytkownika jako VIP.
+    - *And:* System natychmiast odblokuje funkcje VIP (np. warianty tras) w aplikacji.
+    - *And:* System wyświetli potwierdzenie aktywacji VIP.
+
+- **WF-ACCOUNT-04: Nieudana płatność VIP (Scenariusz Wyjątkowy)**
+    - *Given:* Użytkownik rozpoczął proces zakupu VIP.
+    - *When:* Płatność zostanie odrzucona lub przerwana.
+    - *Then:* System nie nada statusu VIP.
+    - *And:* System wyświetli komunikat o niepowodzeniu i umożliwi ponowienie próby.
+
+- **WF-ACCOUNT-05: Widoczny status VIP (Scenariusz Główny)**
+    - *Given:* Użytkownik jest zalogowany.
+    - *When:* Użytkownik otworzy ekran profilu/ustawień (lub inny obszar aplikacji, gdzie status jest prezentowany).
+    - *Then:* System pokaże aktualny status konta (VIP / standard).
+
+---
+
 ### WF-VIP: Funkcje wersji VIP (warianty tras i rozszerzone rekomendacje)
 **Opis:** Wersja VIP udostępnia dodatkowe warianty planu (np. „intensywny”, „spokojny”, „rodzinny”) oraz rozszerzone propozycje atrakcji/miejsc w ramach tej samej logiki działania.
 
