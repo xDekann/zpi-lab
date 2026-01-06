@@ -300,3 +300,53 @@
     - *When:* Użytkownik spróbuje użyć funkcji „Warianty tras”.
     - *Then:* System wyświetli ekran/komunikat informujący o dostępności funkcji w VIP.
     - *And:* System nie blokuje dostępu do standardowego planu.
+### 4.1 Priorytetyzacja wymagań
+
+W celu ustalenia kolejności realizacji wymagań funkcjonalnych zastosowano metodę priorytetyzacji opartą na porównaniu wartości biznesowej do kosztu i ryzyka implementacyjnego
+
+Każde wymaganie zostało ocenione w czterech kategoriach:
+
+- *Korzyść* – wartość funkcjonalności dla użytkownika końcowego
+- *Kara* – konsekwencje braku funkcjonalności
+- *Koszt* – nakład pracy potrzebny na implementację
+- *Ryzyko* – niepewność techniczna lub projektowa
+
+Oceny przyznano w skali Fibonacciego: 1, 2, 3, 5, 8, 13, 21. 
+
+> Priorytet wymagania obliczany jest jako stosunek sumy korzyści i kary
+> do sumy kosztu i ryzyka implementacyjnego.
+>
+> **Priorytet = (Korzyść + Kara) / (Koszt + Ryzyko)**
+
+| ID | Wymaganie funkcjonalne | Korzyść | Kara | Koszt | Ryzyko | Priorytet |
+|----|------------------------|---------:|------:|-------:|--------:|----------:|
+| WF-PLAN | Generowanie planu podróży na podstawie parametrów użytkownika | 21 | 21 | 8 | 3 | 3.50 |
+| WF-INFO | Podgląd szczegółów atrakcji i nawigacja po planie | 13 | 13 | 5 | 3 | 3.25 |
+| WF-EDIT | Edycja planu podróży (dodawanie, usuwanie, zmiana kolejności) | 13 | 8 | 8 | 5 | 1.62 |
+| WF-OFFERS | Lista noclegów i atrakcji z linkami zewnętrznymi | 8 | 5 | 5 | 5 | 1.30 |
+| WF-NIGHT | Uwzględnianie noclegów w planie podróży | 8 | 8 | 8 | 5 | 1.14 |
+| WF-ACCOUNT | Rejestracja konta użytkownika i zakup wersji VIP | 5 | 5 | 13 | 8 | 0.48 |
+| WF-VIP | Zaawansowane funkcje planowania dostępne dla użytkowników VIP | 3 | 3 | 13 | 8 | 0.29 |
+
+### Uzasadnienie przyznanych priorytetów
+
+**WF-PLAN – Generowanie planu podróży**  
+Funkcjonalność stanowi podstawę działania systemu i realizuje jego główny cel. Bez niej aplikacja nie byłaby użyteczna dla użytkownika, co uzasadnia najwyższą ocenę zarówno korzyści, jak i kary. Pomimo relatywnie wysokiego kosztu i ryzyka implementacji, jej znaczenie dla systemu przekłada się na najwyższy priorytet.
+
+**WF-INFO – Podgląd szczegółów atrakcji i nawigacja po planie**  
+Funkcjonalność znacząco zwiększa czytelność i użyteczność wygenerowanego planu, umożliwiając użytkownikowi zapoznanie się ze szczegółami zaproponowanych atrakcji. Jej brak obniżyłby komfort korzystania z systemu, jednak nie uniemożliwiłby jego działania, co uzasadnia wysoki, lecz niższy niż w przypadku WF-PLAN priorytet.
+
+**WF-EDIT – Edycja planu podróży**  
+Możliwość modyfikowania wygenerowanego planu pozwala użytkownikowi dostosować go do własnych preferencji. Funkcjonalność ta jest istotna z punktu widzenia doświadczenia użytkownika, jednak jej implementacja wiąże się z większym kosztem oraz ryzykiem, wynikającym z konieczności zachowania spójności planu.
+
+**WF-OFFERS – Lista ofert noclegów i atrakcji**  
+Funkcjonalność uzupełniająca, umożliwiająca przejście do zewnętrznych serwisów rezerwacyjnych. Jej obecność zwiększa użyteczność systemu, jednak brak tej funkcji nie uniemożliwia realizacji podstawowego celu aplikacji.
+
+**WF-NIGHT – Uwzględnianie noclegów w planie podróży**  
+Funkcjonalność zwiększa kompletność planu podróży, szczególnie w przypadku wyjazdów wielodniowych. Ze względu na to, że nie jest niezbędna do podstawowego działania systemu, otrzymała umiarkowany priorytet.
+
+**WF-ACCOUNT – Rejestracja konta użytkownika i zakup wersji VIP**  
+Funkcjonalność istotna z perspektywy dalszego rozwoju i monetyzacji systemu, jednak niewymagana na etapie pierwszej wersji aplikacji. Wysoki koszt oraz ryzyko implementacji obniżają jej priorytet.
+
+**WF-VIP – Zaawansowane funkcje planowania dla użytkowników VIP**  
+Stanowi rozszerzenie funkcjonalności systemu skierowane do węższej grupy użytkowników. Niewielki wpływ na podstawową funkcjonalność aplikacji oraz relatywnie wysoki koszt wdrożenia uzasadniają najniższy priorytet.
