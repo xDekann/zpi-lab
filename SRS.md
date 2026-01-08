@@ -325,6 +325,7 @@ Oceny przyznano w skali Fibonacciego: 1, 2, 3, 5, 8, 13, 21.
 | WF-MOD | Edycja planu podróży (dodawanie, usuwanie, zmiana kolejności) | 13 | 8 | 8 | 5 | 1.62 |
 | WF-OFERTA | Lista noclegów i atrakcji z linkami zewnętrznymi | 8 | 5 | 5 | 5 | 1.30 |
 | WF-NOC | Uwzględnianie noclegów w planie podróży | 8 | 8 | 8 | 5 | 1.14 |
+| WF-AFFIL | Oznaczanie i ekspozycja partnerów afiliacyjnych | 5 | 3 | 5 | 5 | 0.80 |
 | WF-KONTO | Rejestracja konta użytkownika i zakup wersji VIP | 5 | 5 | 13 | 8 | 0.48 |
 | WF-VIP | Zaawansowane funkcje planowania dostępne dla użytkowników VIP | 3 | 3 | 13 | 8 | 0.29 |
 
@@ -344,6 +345,9 @@ Funkcjonalność uzupełniająca, umożliwiająca przejście do zewnętrznych se
 
 **WF-NOC – Uwzględnianie noclegów w planie podróży**  
 Funkcjonalność zwiększa kompletność planu podróży, szczególnie w przypadku wyjazdów wielodniowych. Ze względu na to, że nie jest niezbędna do podstawowego działania systemu, otrzymała umiarkowany priorytet.
+
+**WF-AFFIL – Oznaczanie i ekspozycja partnerów afiliacyjnych**  
+Funkcjonalność ma charakter biznesowy i wspiera potencjalną monetyzację systemu poprzez wyróżnianie partnerów afiliacyjnych. Jej brak nie wpływa bezpośrednio na możliwość wygenerowania i edycji planu podróży, dlatego uzyskała niższy priorytet niż funkcje związane z planowaniem. Jednocześnie koszt i ryzyko implementacji są umiarkowane, ponieważ funkcjonalność ogranicza się do warstwy prezentacyjnej i oznaczeń.
 
 **WF-KONTO – Rejestracja konta użytkownika i zakup wersji VIP**  
 Funkcjonalność istotna z perspektywy dalszego rozwoju i monetyzacji systemu, jednak niewymagana na etapie pierwszej wersji aplikacji. Wysoki koszt oraz ryzyko implementacji obniżają jej priorytet.
