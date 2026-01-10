@@ -204,7 +204,7 @@ Użytkownik korzystający z aplikacji oczekuje responsywnej aplikacji, która b�
 #### 3. Dostępność
 Podróżujący często sprawdzają plany w miejscach z ograniczonym zasięgiem. Stabilność systemu i mechanizmy cache gwarantują, że użytkownik zawsze ma dostęp do swojego planu, co daje przewagę nad innymi rozwiązaniami oraz umożliwia częste korzystanie z aplikacji.
 
-### 6. Analiza Porównawcza
+## 6. Analiza Porównawcza
 
 W ramach analizy porównawczej zestawiono nasza aplikację razem z bezpośrednią konkurencją, czyli popularną aplikacją do planowania podróży Wanderlog oraz z konkurencją pośrednią, czyli Google Maps. Poniżej pokakano tabelę, w której porównano Funkcjonalność, UX, model biznesowy oraz wspracie zewnętrznych rozwiązań w wymienionych aplikacjach.
 
