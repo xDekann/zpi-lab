@@ -468,7 +468,7 @@ Widok szczegółowy, dostępny po kliknięciu w atrakcję lub ikonę informacji 
     - *When:* Użytkownik wybierze wariant (np. „Spokojny”).
     - *Then:* System wygeneruje i wyświetli alternatywny plan dla tych samych parametrów.
 
-- **WF-VIP-02: Użytkownik bez VIP (Scenariusz Wyjątkowy)**
+- **WF-VIP-02: Użytkownik bez VIP (Scenariusz Alternatywny)**
     - *Given:* Użytkownik nie ma statusu VIP.
     - *When:* Użytkownik spróbuje użyć funkcji „Warianty tras”.
     - *Then:* System wyświetli ekran/komunikat informujący o dostępności funkcji w VIP.
