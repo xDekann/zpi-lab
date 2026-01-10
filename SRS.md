@@ -110,3 +110,60 @@ Dalsza część dokumentu jest zorganizowana w następujący sposób:
 - Rozdział 5 (Atrybuty Jakościowe): definiuje wymagania niefunkcjonalne, takie jak wydajność, bezpieczeństwo danych,
   dostępność i skalowalność systemu.
 - Rozdział 6 (Analiza Wymagań): zawiera analizę porównawczą z konkurencją oraz uzasadnienie przyjętych rozwiązań.
+
+### 3.1. Interfejsy Użytkownika (UI)
+
+#### 3.1.1. Ogólny styl i koncepcja
+Interfejs aplikacji zaprojektowano z wykorzystaniem jasnej palety barw (dominujący błękit oraz biel), co zapewnia czytelność i nowoczesny wygląd. Zastosowano spójną typografię bezszeryfową oraz wyraźne odstępy, aby uniknąć przytłoczenia użytkownika informacjami.
+
+Kluczowe założenia UX:
+*   **Hierarchia informacji:** najważniejsze elementy (mapa, przyciski akcji) są wizualnie wyróżnione.
+*   **Intuicyjne sterowanie:** wykorzystanie znanych wzorców, takich jak suwaki zakresu czy ikony edycji/usuwania.
+*   **Dostępność:** kontrastowe przyciski akcji takie jak "Generuj plan" lub "Nawiguj".
+
+#### 3.1.2. Opis ekranów (makiety)
+
+Poniższe makiety prezentują realizację głównego scenariusza użycia systemu: konfiguracji, przez przegląd planu, po szczegóły atrakcji.
+
+**Ekran 1: Konfigurator podróży**
+
+![Wireframe 1](./Wireframe%20-%201.png)
+
+Ekran startowy służący do zebrania danych wejściowych (zgodnie z **WF-PLAN**).
+*   **Lokalizacja:** pole tekstowe do wprowadzenia miejsca docelowego.
+*   **Budżet:** suwak zakresowy pozwalający określić widełki cenowe (np. 30-1000 zł).
+*   **Preferencje:** system tagów, umożliwiający szybki wybór kategorii (Muzea, Jedzenie, Natura, Architektura).
+*   **Termin:** kalendarz pozwalający zaznaczyć przedział dat wyjazdu.
+*   **Akcja:** przycisk "Generuj plan" umieszczony na dole ekranu (łatwo dostępny na urządzeniach mobilnych).
+
+**Ekran 2: Widok planu i mapy**
+
+![Wireframe 2](./Wireframe%20-%202.png)
+
+Główny widok, realizujący wymagania **WF-PLAN**, **WF-MOD** oraz **WF-AFFIL**.
+*   **Mapa:** interaktywna mapa (OpenStreetMap) z naniesioną trasą i ponumerowanymi punktami (markerami), co pozwala na szybką orientację przestrzenną.
+*   **Sekcja wyboru noclegu:** dedykowany moduł prezentujący oferty partnerów, dopasowane do lokalizacji, realizujący funkcję monetyzacji i wsparcia logistycznego (**WF-AFFIL**).
+*   **Lista atrakcji:** chronologiczna lista punktów planu. Każda karta zawiera:
+    *   Przedział czasowy wizyty.
+    *   Nazwę i tagi kategorii.
+    *   **Narzędzia edycji (WF-MOD):** ikony pozwalające na podgląd szczegółów (ikona "i"), edycję godziny (ołówek) oraz usunięcie punktu z planu (kosz).
+
+**Ekran 3: Szczegóły atrakcji**
+
+![Wireframe 3](./Wireframe%20-%203.png)
+
+Widok szczegółowy, dostępny po kliknięciu w atrakcję lub ikonę informacji (**WF-INFO**, **WF-OFERTA**).
+*   **Multimedia:** galeria zdjęć (główne zdjęcie oraz miniatury).
+*   **Opis merytoryczny:** sekcja tekstowa zawierająca opis miejsca, adres oraz godziny otwarcia.
+*   **Pasek akcji:** pasek u dołu ekranu z kluczowymi przyciskami:
+    1.  **"Nawiguj":** uruchamia zewnętrzną aplikację mapową.
+    2.  **"Kup bilet":** przycisk afiliacyjny kierujący do zewnętrznego systemu rezerwacji (realizacja **WF-OFERTA**).
+
+### 3.2. Interfejsy programowe (API)
+
+| Nazwa Interfejsu | Opis i cel integracji | Wykorzystanie na makietach |
+| :--- | :--- | :--- |
+| **OpenTripMap/Wikidata** | Pobieranie nazw, opisów, godzin otwarcia i kategorii atrakcji. | Widoczne jako dane na kartach (ekran 2) i opisy (ekran 3). |
+| **OpenStreetMap** | Wyświetlanie podkładu mapowego. | Widoczna mapa Amsterdamu (ekran 2). |
+| **Routing API (np. OSRM)** | Wyznaczanie kolejności punktów i rysowanie linii trasy na mapie. | Widoczna przerywana linia trasy łącząca punkty 1-2-3-4 na mapie. |
+| **API partnerów afiliacyjnych** | Pobieranie ofert promowanych (hotele, bilety). | Sekcja wyboru noclegu (ekran 2) oraz przycisk "Kup bilet" (ekran 3). |
