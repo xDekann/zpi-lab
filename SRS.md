@@ -111,6 +111,88 @@ Dalsza część dokumentu jest zorganizowana w następujący sposób:
   dostępność i skalowalność systemu.
 - Rozdział 6 (Analiza Wymagań): zawiera analizę porównawczą z konkurencją oraz uzasadnienie przyjętych rozwiązań.
 
+## 2. Opis Ogólny
+
+System Automatycznego Planowania Podróży jest aplikacją webową, której architektura funkcjonalna opiera się na czterech
+głównych modułach. Poniższe zestawienie stanowi ogólny zarys funkcjonalności, które zostały szczegółowo zdefiniowane w 
+Rozdziale 4 (Wymagania Funkcjonalne).
+
+### 2.1. Główne Funkcje Produktu
+
+* **Moduł Inteligentnego Planowania:**
+    - Agregacja danych o atrakcjach (POI) z otwartych źródeł (OpenTripMap, OpenStreetMap, Wikivoyage).
+    - Automatyczne generowanie harmonogramu na podstawie parametrów: lokalizacja, data, budżet i preferencje (np. muzea, natura).
+    - Algorytmiczne układanie logicznej kolejności zwiedzania (rozwiązywanie problemu komiwojażera w kontekście turystycznym).
+* **Moduł Zarządzania Logistyką i Edycją:**
+    - Obsługa ram czasowych dnia: "Start dnia" i "Koniec dnia" powiązane z lokalizacją noclegu.
+    - Interaktywna edycja planu: usuwanie punktów, przenoszenie atrakcji między dniami (Drag & Drop), dodawanie własnych punktów.
+    - Obsługa scenariuszy specjalnych, takich jak "nocleg w podróży" (np. pociąg nocny).
+* **Moduł Komercyjny i Afiliacyjny:**
+    - Prezentacja ofert noclegowych i biletowych dopasowanych do wygenerowanej trasy.
+    - Mechanizm Deep Linking: przekierowanie użytkownika bezpośrednio do zewnętrznych partnerów (Booking, systemy rezerwacyjne) w celu finalizacji transakcji.
+    - Sekcje "Polecane" wyróżniające partnerów afiliacyjnych.
+* **Moduł Konta i Personalizacji (VIP):**
+    - Rejestracja i logowanie użytkowników w celu zapisywania planów.
+    - Obsługa subskrypcji VIP, odblokowującej zaawansowane warianty tras (np. "trasa intensywna", "trasa spokojna") oraz rozszerzone bazy POI.
+
+### 2.2. Klasy Użytkowników
+
+W systemie zidentyfikowano trzy główne klasy użytkowników końcowych, różniące się poziomem uprawnień oraz dostępem do funkcji premium.
+1. Niezarejestrowany użytkownik standardowy (gość)**:
+    - Osoba szukająca szybkiego, darmowego planu podróży. Często jest to "niezależny turysta" (FIT - Free Independent Traveler). Chce sprawdzić nową aplikację bez rejestracji.
+    - Może wygenerować podstawowy plan, edytować go, korzystać z linków afiliacyjnych.
+    - Nie może zapisywać planów ani korzystać z wariantów tras, traci dostęp do planów po zamknięciu sesji.
+    - Brak dostępu do alternatywnych wariantów tras i zaawansowanych filtrów.
+    - Limit generowanych planów na sesję, maksymlanie 1 plan dziennie.
+2. **Zarejestrowany użytkownik standardowy**:
+    - Użytkownik, który założył konto w aplikacji, aby zapisywać i zarządzać swoimi planami podróży.
+    - Ma dostęp do wszystkich funkcji darmowych, w tym zapisywania planów i historii.
+    - Może korzystać z podstawowych funkcji edycji i personalizacji planów.
+    - Nie ma dostępu do funkcji premium (warianty tras, rozszerzone bazy POI).
+3. **Użytkownik VIP**:
+   - Użytkownik wymagający, ceniący wysoką personalizację lub specyficzny styl podróżowania (np. rodziny z dziećmi, "slow travel").
+   - Wszystkie funkcje użytkownika standardowego plus dostęp do wariantów tras, brak reklam oraz priorytetowe rekomendacje.
+
+**Persony Użytkowników**
+
+Persona A: Tomasz "Backpacker" (Użytkownik Standardowy):
+- Wiek: 24 lata
+- Status: student, podróżuje budżetowo.
+- Cel: chce zwiedzić Berlin w 3 dni, wydając jak najmniej. Nie chce tracić czasu na czytanie przewodników.
+- Potrzeba: szybkie wygenerowanie logicznej trasy, aby zobaczyć "topowe" atrakcje i znaleźć tani hostel.
+- Cytat: "Mam bilet na jutro, potrzebuję gotowego planu w kilka minut, żeby nie błądzić z plecakiem."
+
+Persona B: Anna "Komfort i Rodzina" (Użytkownik VIP)
+- Wiek: 38 lat
+- Status: pracująca mama dwójki dzieci.
+- Cel: planuje rodzinny wyjazd do Rzymu.
+- Potrzeba: unikanie tłumów i pośpiechu. Potrzebuje wariantu trasy "Spokojna/Rodzinna", który uwzględnia wolniejsze tempo i atrakcje przyjazne dzieciom. Jest gotowa zapłacić za VIP, by zaoszczędzić stresu.
+- Cytat: "Nie chcę biegać od muzeum do muzeum. Chcę planu, który pozwoli nam spokojnie zjeść lody i zobaczyć miasto bez marudzenia dzieci. Jestem gotowa zapłacić, żeby mieć pewność, że będzie to plan dostosowany do naszych potrzeb."
+
+### 2.3. Ograniczenia Projektowe i Implementacyjne
+
+#### Ograniczenia Technologiczne
+- Architektura: aplikacja musi być w pełni "konteneryzowalna" (Docker) i uruchamialna jedną komendą, aby zapewnić przenośność.
+- Bezpieczeństwo: wymuszenie protokołu HTTPS (TLS 1.3) oraz polityki Content Security Policy (CSP) dla ochrony danych przesyłanych między frontendem a backendem.
+- Zależność od API: system jest całkowicie zależny od dostępności zewnętrznych, otwartych źródeł danych (OpenTripMap, OSM). Awaria tych serwisów wymaga działania mechanizmów cache.
+- API First: aplikacja wymaga stałego połączenia z internetem do generowania planów i pobierania szczegółów (brak trybu offline dla generowania).
+
+#### Ograniczenia Organizacyjne
+- Budżet: projekt realizowany jest jako MVP (Minimum Viable Product) przy minimalnym budżecie, co wymusza korzystanie wyłącznie z darmowych danych (Open Data) bez opłat licencyjnych.
+- Zasoby ludzkie: zespół deweloperski funkcjonuje jako "Small Agile Team" (4-7 osób). Ze względu na sztywny termin wejścia na rynek, zakres prac został ograniczony do kluczowych funkcjonalności. Złożone moduły zostały wykluczone z zakresu MVP na rzecz integracji z gotowymi rozwiązaniami zewnętrznymi.
+- Metodyka pracy: prace prowadzone są w metodyce Scrum z dwutygodniowymi sprintami, co narzuca konieczność dostarczania przyrostu funkcjonalnego w krótkich odstępach czasu i priorytetyzację zadań według wartości biznesowej
+
+#### Ograniczenia Prawne i Środowiskowe
+- Licencje danych: konieczność przestrzegania licencji ODbL (Open Database License) przy wykorzystaniu danych z OpenStreetMap (wymagane atrybucje).
+- RODO (GDPR): ochrona danych osobowych użytkowników (e-mail, hasła) podczas rejestracji konta i zakupu subskrypcji VIP.
+- Regulaminy Partnerów: implementacja linków afiliacyjnych musi być zgodna z warunkami świadczenia usług partnerów zewnętrznych (np. zakaz "cloakingu" linków).
+
+### 2.4. Założenia Projektowe
+- Płatności zewnętrzne: zakłada się, że wszelkie transakcje związane z rezerwacją noclegów i biletów odbywają się poza systemem. Aplikacja nie przetwarza danych kart kredytowych dla usług turystycznych.
+- Dokładność danych Open Data: zakłada się, że dane pobierane z OpenTripMap/Wikivoyage są wystarczająco dokładne i aktualne dla celów turystycznych MVP. Ewentualne błędy w danych (np. nieaktualne godziny otwarcia) są niezależne od systemu.
+- Dostępność użytkownika: zakłada się, że użytkownik posiada urządzenie mobilne lub desktopowe z nowoczesną przeglądarką internetową obsługującą HTML5 i geolokalizację.
+- Model przychodowy: zakłada się, że konwersja na linki afiliacyjne (min. 5%) oraz subskrypcje VIP (2%) będą wystarczające do utrzymania serwerów w fazie produkcyjnej.
+
 ## 3. Wymagania Dotyczące Interfejsów Zewnętrznych
 
 ### 3.1. Interfejsy Użytkownika (UI)
@@ -582,4 +664,4 @@ W ramach analizy porównawczej zestawiono nasza aplikację razem z bezpośredni�
 
 **2. Jakie są słabe punkty konkurencji?**
 * Google Maps daje narzędzia, ale nie zwraca gotowego planu podróży. Nasza aplikacja automatyzuje tworzenie planów, co może zachęcić użytkowników do korzystania z naszej aplikacji.
-* Wanderlog jest zbyt rozbudowany do krótkich wyjazdów, dodatkowo blokuje funkcje offline za subskrypcją. Nasz projekt stawia na darmowy dostęp offline, co może przyciągnąć użytkowników, którzy będą podróżować po miejscach z ograniczonym zasięgiem i dostępem do internetu.
+* Nasz projekt umożliwia darmowy podgląd wcześniej pobranego planu w trybie offline (dzięki mechanizmom PWA/Cache), podczas gdy Wanderlog blokuje tę funkcję za paywallem.
