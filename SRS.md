@@ -143,6 +143,7 @@ W systemie zidentyfikowano trzy główne klasy użytkowników końcowych, różn
     - Może wygenerować podstawowy plan, edytować go, korzystać z linków afiliacyjnych.
     - Nie może zapisywać planów ani korzystać z wariantów tras, traci dostęp do planów po zamknięciu sesji.
     - Brak dostępu do alternatywnych wariantów tras i zaawansowanych filtrów.
+    - Limit generowanych planów na sesję, maksymlanie 1 plan dziennie.
 2. **Zarejestrowany użytkownik standardowy**:
     - Użytkownik, który założył konto w aplikacji, aby zapisywać i zarządzać swoimi planami podróży.
     - Ma dostęp do wszystkich funkcji darmowych, w tym zapisywania planów i historii.
@@ -159,14 +160,14 @@ Persona A: Tomasz "Backpacker" (Użytkownik Standardowy):
 - Status: student, podróżuje budżetowo.
 - Cel: chce zwiedzić Berlin w 3 dni, wydając jak najmniej. Nie chce tracić czasu na czytanie przewodników.
 - Potrzeba: szybkie wygenerowanie logicznej trasy, aby zobaczyć "topowe" atrakcje i znaleźć tani hostel.
-- Cytat: "Mam bilet na jutro, potrzebuję gotowego planu w 5 sekund, żeby nie błądzić z plecakiem."
+- Cytat: "Mam bilet na jutro, potrzebuję gotowego planu w kilka minut, żeby nie błądzić z plecakiem."
 
 Persona B: Anna "Komfort i Rodzina" (Użytkownik VIP)
 - Wiek: 38 lat
 - Status: pracująca mama dwójki dzieci.
 - Cel: planuje rodzinny wyjazd do Rzymu.
 - Potrzeba: unikanie tłumów i pośpiechu. Potrzebuje wariantu trasy "Spokojna/Rodzinna", który uwzględnia wolniejsze tempo i atrakcje przyjazne dzieciom. Jest gotowa zapłacić za VIP, by zaoszczędzić stresu.
-- Cytat: "Nie chcę biegać od muzeum do muzeum. Chcę planu, który pozwoli nam spokojnie zjeść lody i zobaczyć miasto bez marudzenia dzieci."
+- Cytat: "Nie chcę biegać od muzeum do muzeum. Chcę planu, który pozwoli nam spokojnie zjeść lody i zobaczyć miasto bez marudzenia dzieci. Jestem gotowa zapłacić, żeby mieć pewność, że będzie to plan dostosowany do naszych potrzeb."
 
 ### 2.3. Ograniczenia Projektowe i Implementacyjne
 
