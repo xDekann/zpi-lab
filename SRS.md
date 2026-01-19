@@ -49,7 +49,7 @@ głównych zadań systemu należy:
 
 | Typ Celu        | Opis Celu                                                                                                   | Mierzalne Kryterium Akceptacji (KPI)                                                                                                                                 |
 |:----------------|:------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Użytkownika** | **Szybkość planowania:** użytkownik chce drastycznie skrócić czas potrzebny na przygotowanie planu wyjazdu. | **KPI-USR-01:** System wygeneruje kompletny plan podróży (dla zakresu do 7 dni) w czasie poniżej 5 sekund od zatwierdzenia formularza.                               |
+| **Użytkownika** | **Szybkość planowania:** użytkownik chce znacząco skrócić czas potrzebny na przygotowanie planu wyjazdu.    | **KPI-USR-01:** System wygeneruje kompletny plan podróży (dla zakresu do 7 dni) w czasie poniżej 5 sekund od zatwierdzenia formularza.                               |
 | **Użytkownika** | **Użyteczność:** plan musi być logiczny i wykonalny geograficznie.                                          | **KPI-USR-02:** 90% wygenerowanych atrakcji w ramach jednego dnia znajduje się w promieniu pozwalającym na dotarcie do nich (pieszo/komunikacją) w założonym czasie. |
 | **Biznesowy**   | **Monetyzacja (afiliacja):** generowanie przychodu poprzez przekierowania do partnerów (booking, atrakcje). | **KPI-BIZ-01:** Minimum 5% użytkowników przeglądających plan kliknie w link zewnętrzny ("Zobacz ofertę" / "Zarezerwuj").                                             |
 | **Biznesowy**   | **Konwersja na VIP:** zachęcenie użytkowników do zakupu subskrypcji dla lepszych funkcji.                   | **KPI-BIZ-02:** Osiągnięcie konwersji na poziomie 2% użytkowników darmowych przechodzących na płatny plan VIP w skali miesiąca.                                      |
@@ -172,7 +172,8 @@ Persona B: Anna "Komfort i Rodzina" (Użytkownik VIP)
 ### 2.3. Ograniczenia Projektowe i Implementacyjne
 
 #### Ograniczenia Technologiczne
-- Architektura: aplikacja musi być w pełni "konteneryzowalna" (Docker) i uruchamialna jedną komendą, aby zapewnić przenośność.
+- Architektura: brak budżetu na serwery wymusza korzystanie z darmowych planów chmurowych (free tier) o restrykcyjnych limitach sprzętowych (niska pamięć RAM, współdzielone vCPU).
+  Wymusza to pełną konteneryzację (Docker) i optymalizację aplikacji, aby działała płynnie na minimalnych zasobach i była łatwa do przeniesienia w przypadku wyczerpania limitów danego dostawcy.
 - Bezpieczeństwo: wymuszenie protokołu HTTPS (TLS 1.3) oraz polityki Content Security Policy (CSP) dla ochrony danych przesyłanych między frontendem a backendem.
 - Zależność od API: system jest całkowicie zależny od dostępności zewnętrznych, otwartych źródeł danych (OpenTripMap, OSM). Awaria tych serwisów wymaga działania mechanizmów cache.
 - API First: aplikacja wymaga stałego połączenia z internetem do generowania planów i pobierania szczegółów (brak trybu offline dla generowania).
