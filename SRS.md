@@ -651,18 +651,23 @@ Podróżujący często sprawdzają plany w miejscach z ograniczonym zasięgiem. 
 
 W ramach analizy porównawczej zestawiono nasza aplikację razem z bezpośrednią konkurencją, czyli popularną aplikacją do planowania podróży Wanderlog oraz z konkurencją pośrednią, czyli Google Maps. Poniżej pokakano tabelę, w której porównano Funkcjonalność, UX, model biznesowy oraz wspracie zewnętrznych rozwiązań w wymienionych aplikacjach.
 
-| **Kryterium Oceny** | **Nasza aplikacja** | **Wanderlog** | **Google Maps** |
+| **Kryterium Oceny** | **Nasza aplikacja** | **Wanderlog** | **Mapy Google** |
 | :--- | :--- | :--- | :--- |
-| **Funkcjonalność** | System sam układa plan dnia i trasę na bazie preferencji i budżetu. | Aplikacja pozwala na zapisywanie rezerwacji, notatek i ręczne tworzenie listy miejsc do odwiedzenia. | Aplikacja pozwala na lokalizację miejsc i szukaniu drogi pomiędzy poszczególnymi obiektami |
-| **User Experience** | Minimalistyczny interfejs, natychmiastowy wynik bez nadmiarowej konfiguracji. | Rozbudowany interfejs z wieloma panelami, wymagający czasu na opanowanie. | Wygodna do nawigacji, ale nie najlepsza przy tworzeniu szczegółowego planu podróży. |
-| **Model Biznesowy** | Darmowy dostęp do planera, prowizje od rezerwacji oraz płatne warianty tras (VIP). |  Wiele funkcji, np. plan podróży offline, czy śledzenie bieżącej trasy lotu wybranego samolotu ukrytych za płatnym abonamentem. | Zarabianie na widoczności lokalnych firm i danych użytkowników. |
+| **Planowanie trasy** | System sam układa plan dnia i trasę na bazie preferencji i budżetu. | Aplikacja pozwala na zapisywanie rezerwacji, notatek i ręczne tworzenie listy miejsc do odwiedzenia. | Aplikacja pozwala na lokalizację wybranych przez użytkownika miejsc i szukaniu drogi pomiędzy poszczególnymi punktami trasy. |
+| **User Experience** | Minimalistyczny interfejs, natychmiastowy wynik bez nadmiarowej konfiguracji. | Rozbudowany interfejs z wieloma panelami, wymagający czasu na opanowanie. | Wygodne do nawigacji, ale nie najlepsze przy tworzeniu szczegółowego planu podróży. |
+| **Optymalizacja trasy** | System rozwiązuje problem kolejności zwiedzania, tworząc efektywną trasę. | Użytkownik sam musi decydować, w jakiej kolejności odwiedzi wybrane miejsca. | Brak wsparcia w planowaniu chronologii całego dnia zwiedzania. |
+| **Działanie aplikacji w trudnych warunkach** | Dostęp do wygenerowanego planu i map bez połączenia z siecią w darmowej wersji. | Możliwość przeglądania planów bez dostępu do internetu dostępna tylko w płatnym abonamencie. | Możliwość pobrania wybranego fragment mapy, w trybie offline niewygodny dostęp do zaplanowanych tras. |
+| **Model Biznesowy** | Darmowy dostęp do planera, prowizje od rezerwacji oraz płatne warianty tras (VIP). | Wiele funkcji, takich jak plan podróży offline czy automatyczny import rezerwacji z GMaila, ukrytych za płatnym abonamentem. | Zarabianie na widoczności lokalnych firm i danych użytkowników. |
+| **Kontrola Budżetu** | Użytkownik może określić swój budżet już na początkowym etapie planowania podróży i plan zwiedzania jest układany z uwzględnieniem podanej kwoty. |  Można podać swój budżet, niemniej podana kwota nie ma wpływu na plan podróży zapisany w aplikacji. | Ograniczone narzędzia do planowania kosztów podróży. Przy wyszukiwaniu pojedynczych miejsc jest możliwość podania budżetu. |
 | **Wsparcie i wykorzystanie zewnętrznych rozwiązań** |  Oparcie na OpenStreetMap i OpenTripMap, odsyłanie do zewnętrznych portali rezerwacyjnych dzieki linkom afiliacyjnym. | Integracja z Gmail i komercyjnymi API dostawców map. | Pełna integracja z usługami Google, ogromna baza danych gromadzonych przez Google. |
 
-
 **1. Co konkurencja robi dobrze?**
-* Google Maps oferuje czytelny widok punktów na mapie oraz wyczerpującą ilość danych o miejscach. Nasz system powinien dążyć do podobnej płynności działania mapy i wygody z korzystania z map.
-* Wanderlog w wygodny sposób pozwala znaleźć noclegi w zależności od tego, gdzie użytkownik będzie przebywał danego dnia. Nasza aplikacja również powinna dopasowywać noclegi do miejsca, w którym uzytkownik będzie sie znajdował.
+
+* Wanderlog dobrze sobie radzi z automatycznym importowaniem rezerwacji z poczty e-mail, dzięki czemu jest wygodnym miejscem do przechowywania informacji o wyjeździe w jednym miejscu.
+* Mapy Google dostarczają najwięcej informacji odnośnie danych obiektów na mapie, potrafią również w czasie rzeczywistym optymalizować drogę z początku do końca trasy, np. dzięki śledzeniu aktualnego natężenia ruchu. 
 
 **2. Jakie są słabe punkty konkurencji?**
-* Google Maps daje narzędzia, ale nie zwraca gotowego planu podróży. Nasza aplikacja automatyzuje tworzenie planów, co może zachęcić użytkowników do korzystania z naszej aplikacji.
-* Nasz projekt umożliwia darmowy podgląd wcześniej pobranego planu w trybie offline (dzięki mechanizmom PWA/Cache), podczas gdy Wanderlog blokuje tę funkcję za paywallem.
+
+* Największą słabością konkurecji jest konieczność samodzielnego wyboru kolejnych etapów podróży. Konkurencja udostępnia narzędzia do zaplanowania podróży (np. mapy, listy atrakcji), ale nie dostarcza gotowej trasy do zwiedzania.
+* W Wanderlog tryb offline jest dodatkowo płatny, co potencjalnie zniechęca do korzystania w przypadku, gdy użytkownicy będą się znajdować w miejscach o ograniczonym dostępie do internetu. Dodatkowo budzęt jest tylko liczbą wpisaną przez użytkownika, aplikacja nie potrafi automatycznie odrzucić zbyt drogich atrakcji lub zaproponować tańszych alternatyw, by zmieścić się w ustalonym limicie.
+* W mapach Google brak wsparcia dla tras pieszych w trybie offline znacząco obniża wartość aplikacji dla turystów poruszających się po mieście pieszo, czy rowerem.
