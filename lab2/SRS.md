@@ -212,7 +212,7 @@ Poniższe makiety prezentują realizację głównego scenariusza użycia systemu
 
 **Ekran 1: Konfigurator podróży**
 
-![Wireframe 1](Wireframe%20-%201.png)
+![Wireframe 1](./Wireframe%20-%201.png)
 
 Ekran startowy służący do zebrania danych wejściowych (zgodnie z **WF-PLAN**).
 *   **Lokalizacja:** pole tekstowe do wprowadzenia miejsca docelowego.
@@ -223,7 +223,7 @@ Ekran startowy służący do zebrania danych wejściowych (zgodnie z **WF-PLAN**
 
 **Ekran 2: Widok planu i mapy**
 
-![Wireframe 2](Wireframe%20-%202.png)
+![Wireframe 2](./Wireframe%20-%202.png)
 
 Główny widok, realizujący wymagania **WF-PLAN**, **WF-MOD** oraz **WF-AFFIL**.
 *   **Mapa:** interaktywna mapa (OpenStreetMap) z naniesioną trasą i ponumerowanymi punktami (markerami), co pozwala na szybką orientację przestrzenną.
@@ -235,7 +235,7 @@ Główny widok, realizujący wymagania **WF-PLAN**, **WF-MOD** oraz **WF-AFFIL**
 
 **Ekran 3: Szczegóły atrakcji**
 
-![Wireframe 3](Wireframe%20-%203.png)
+![Wireframe 3](./Wireframe%20-%203.png)
 
 Widok szczegółowy, dostępny po kliknięciu w atrakcję lub ikonę informacji (**WF-INFO**, **WF-OFERTA**).
 *   **Multimedia:** galeria zdjęć (główne zdjęcie oraz miniatury).
