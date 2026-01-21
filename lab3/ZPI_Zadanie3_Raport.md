@@ -108,7 +108,78 @@ Dla każdego wywołania:
 
 ### 3.4 Definition of Done (DoD)
 
+**Epik:** PoC Core - silnik generowania planu (WF-PLAN)
+
 ---
+
+#### 1. Kryteria Funkcjonalne
+- **Pobieranie i filtrowanie danych:** System poprawnie pobiera dane POI i aplikuje filtry po tagach.
+- **Logika tworzenia trasy:** Algorytm wyznacza optymalną kolejność zwiedzania z uwzględnieniem geolokalizacji i okien czasowych (PoC: trasa ≤1,5× minimalnej).
+- **Parametry trasy:** Każdy wygenerowany plan zawiera szacowany czas dotarcia i czas pobytu w POI.
+
+#### 2. Warstwa API (v1/plan)
+- **Endpoint:** Interfejs `/v1/plan` przyjmuje żądania i zwraca poprawną strukturę danych JSON zawierającą POI w odpowiedniej kolejności zwiedzania.
+- **Obsługa błędów (ZPI-41):** System zwraca kody 4xx/5xx w przypadku braku danych, błędnych parametrów lub awarii silnika.
+- **Dokumentacja:** Kontrakt API jest opisany w standardzie OpenAPI/Swagger.
+
+#### 3. Walidacja Techniczna i Jakość
+- **Integracja:** Testy integracyjne przechodzą pomyślnie w środowisku deweloperskim.
+- **Jakość kodu:** Kod przeszedł procedurę Code Review i nie zawiera krytycznych błędów.
+- **Testy:** Pokrycie testami jednostkowymi kluczowej logiki algorytmu wynosi min. 80%.
+
+#### 4. Akceptacja Końcowa
+- Kod został scalony do gałęzi głównej.
+- Funkcjonalność została zweryfikowana i zaakceptowana przez osobę decyzyjną.
+
+**Epik:** Prezentacja harmonogramu i interaktywna mapa (WF-INFO)
+
+---
+
+#### 1. Wygląd i Działanie (UI/UX)
+- **Mapa:** Interaktywna mapa (OpenStreetMap) poprawnie wyświetla trasę zwiedzania i wszystkie punkty (POI).
+- **Lista:** Harmonogram jest czytelny, podzielony na konkretne dni i ułożony chronologicznie (oś czasu).
+- **Szczegóły:** Po kliknięciu w atrakcję pojawia się okno lub widok z opisem i zdjęciami miejsca.
+- **Synchronizacja:** najechanie myszką na element listy podświetla odpowiadający mu punkt na mapie (i na odwrót).
+- **Responsywność:** Widok mapy i listy dopasowuje się do ekranu telefonu i komputera.
+
+#### 2. Obsługa Danych i Błędów
+- **Błędne dane:** Jeśli system otrzyma niepełne dane (np. brak współrzędnych POI), wyświetla komunikat o błędzie zamiast "rozsypanego" widoku.
+- **Weryfikacja wizualna:** Na mapie widać gołym okiem, że atrakcje są blisko siebie (zgodnie z logiką geograficzną).
+
+#### 3. Jakość Techniczna
+- **Kontrola kodu:** Przynajmniej dwie osoby z zespołu sprawdziły kod pod kątem błędów i czytelności.
+- **Czystość zapisu:** Kod nie zawiera niepotrzebnych powtórzeń i jest zgodny z przyjętymi standardami zespołu.
+- **Wydajność:** Mapa ładuje się płynnie, a przełączanie między dniami nie powoduje zawieszania aplikacji.
+
+#### 4. Akceptacja Końcowa
+- Funkcjonalność została przetestowana na różnych urządzeniach (telefon, laptop).
+- Wszystkie zmiany zostały zapisane w głównym folderze projektu.
+- Wynik prac został pokazany i zaakceptowany przez osobę decyzyjną.
+
+
+**Epik:** Mechanizmy modyfikacji planu i zarządzanie logistyką (WF-MOD, WF-NOC)
+
+---
+
+#### 1. Funkcje edycji (WF-MOD)
+- **Zmiana kolejności:** Użytkownik może swobodnie zmieniać kolejność atrakcji, a system ponownie tworzy trasę zwiedzania.
+- **Usuwanie:** Użytkownik może usunąć niechcianą atrakcję z planu dnia.
+- **Pełna kontrola:** Po edycji plan pozostaje spójny i użytkownik ma nad nim pełną władzę.
+
+#### 2. Zarządzanie logistyką (WF-NOC)
+- **Ramy dnia:** Użytkownik może zdefiniować godzinę startu i zakończenia zwiedzania każdego dnia.
+- **Obsługa noclegów:** System pozwala na wskazanie miejsca noclegu (start/koniec dnia w konkretnym punkcie).
+-  **Placeholder:** Interfejs pozwala zarezerwować czas na nieplanowane aktywności.
+
+#### 3. Jakość techniczna i środowisko
+- **Stabilność:** Edycja planu nie powoduje błędów w działaniu mapy ani harmonogramu.
+- **Przegląd:** Kod przeszedł przegląd pod kątem logiki przeliczania trasy po zmianach użytkownika.
+
+#### 4. Akceptacja Końcowa
+- **Testy użytkownika:** Sprawdzono, czy przesuwanie i usuwanie elementów jest intuicyjne i szybkie.
+- **Wdrożenie:** Wszystkie funkcje są scalone z głównym kodem projektu.
+- **Zatwierdzenie:** Funkcje edycji i logistyki zostały zaakceptowane przez osobę decyzyjną.
+
 
 ## 4. Pre-Mortem dla PoC (ryzyka + plan zapobiegawczy)
 
