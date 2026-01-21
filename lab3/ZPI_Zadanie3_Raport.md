@@ -41,9 +41,8 @@ Wstaw wizualizację (Gantt) dla epików – np. eksport z Jira lub zrzut ekranu.
 #### Hipoteza
 Da się automatycznie:
 - Pobrać atrakcje z OpenTripMap dla miasta,
-- Przefiltrować je po kategoriach,
 - Ułożyć je w logicznej kolejności zwiedzania na podstawie odległości (routing),
-- Zrobić z tego sensowny jednodniowy plan w formie POI -> POI.
+- Zrobić z tego sensowny jednodniowy plan w formie od atrakcji do atrakcji, gdzie każda atrakcja zawiera opis
 
 #### Co sprawdzamy technicznie
 - Czy API OpenTripMap daje wystarczająco dobre dane (POI, kategorie, współrzędne),
@@ -75,16 +74,17 @@ Kroki:
 
 #### Eksperyment
 - Wejście: Rzym, 1 dzień, preferencje „muzea”
-- Mierzymy:
-    1. Czas odpowiedzi
-    2. Liczbę atrakcji
-    3. Łączny czas przejść
-    4. Suma odległości między POI
-    5. Odległość w linii prostej między pierwszym POI a ostatnim POI
+- Mierzymy lub zapisujemy:
+  1. Czas odpowiedzi
+  2. Odpowiedź API (JSON)
+  3. Całkowitą długość trasy
+
+Dla każdego wywołania wyliczamy minimalną sumę odległości ze zwróconych punktów - wywołanie powtarzamy N razy (np. 1000). Przy okazji sprawdzamy, czy za każdym razem uzyskane są wszystkie atrybuty w odpowiedzi API.
 
 #### Kryteria sukcesu
+Dla każdego wywołania:
 - Plan generuje się **< 5s**
-- Trasa zwiedzania jest uznana za niechaotyczną, jeśli jej całkowita długość nie przekracza **1,5× minimalnej możliwej sumy odległości** potrzebnej do połączenia wszystkich wybranych atrakcji w jedną spójną strukturę (przy założeniu znanych odległości między każdą parą atrakcji).
+- Gdy całkowita długość trasy nie przekracza 1,5-krotności minimalnej możliwej sumy odległości potrzebnej do połączenia wszystkich wybranych atrakcji w jedną spójną strukturę (minimalne drzewo rozpinające), przy założeniu, że każda para atrakcji ma znaną odległość między sobą.
 - Każdy punkt ma **nazwę, opis i lokalizację**
 
 #### Możliwe scenariusze i decyzje
