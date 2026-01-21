@@ -40,10 +40,9 @@ Wstaw wizualizację (Gantt) dla epików – np. eksport z Jira lub zrzut ekranu.
 
 #### Hipoteza
 Da się automatycznie:
-- Pobrać atrakcje z OpenTripMap dla miasta,
-- Przefiltrować je po kategoriach,
-- Ułożyć je w logicznej kolejności zwiedzania na podstawie odległości (routing),
-- Zrobić z tego sensowny jednodniowy plan w formie POI -> POI.
+- Czy API OpenTripMap daje wystarczająco dobre dane (POI, kategorie, współrzędne),
+- Czy da się szybko policzyć kolejność zwiedzania (np. najbliższy sąsiad / OSRM),
+- Czy wynik jest użyteczny (czas, dystans, kolejność).
 
 #### Co sprawdzamy technicznie
 - Czy API OpenTripMap daje wystarczająco dobre dane (POI, kategorie, współrzędne),
@@ -76,11 +75,9 @@ Kroki:
 #### Eksperyment
 - Wejście: Rzym, 1 dzień, preferencje „muzea”
 - Mierzymy:
-    1. Czas odpowiedzi
-    2. Liczbę atrakcji
-    3. Łączny czas przejść
-    4. Suma odległości między POI
-    5. Odległość w linii prostej między pierwszym POI a ostatnim POI
+  1. Czas odpowiedzi
+  2. Odpowiedź API (JSON)
+  3. Całkowitą długość trasy
 
 #### Kryteria sukcesu
 - Plan generuje się **< 5s**
