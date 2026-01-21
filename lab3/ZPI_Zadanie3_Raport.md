@@ -74,7 +74,7 @@ Kroki:
 
 #### Eksperyment
 - Wejście: Rzym, 1 dzień, preferencje „muzea”
-- Mierzymy:
+- Mierzymy lub zapisujemy:
   1. Czas odpowiedzi
   2. Odpowiedź API (JSON)
   3. Całkowitą długość trasy
