@@ -18,20 +18,21 @@ Celem niniejszego raportu jest przedstawienie:
 
 ### 2.1 Epiki (MVP)
 | ID | Epic | Opis (1–2 zdania) | Priorytet |
-|---:|------|-------------------|:---------:|
-| EP-01 | \<nazwa\> | \<opis\> | High/Med/Low |
-| EP-02 | \<nazwa\> | \<opis\> | High/Med/Low |
-| EP-03 | \<nazwa\> | \<opis\> | High/Med/Low |
-| EP-04 | \<nazwa\> | \<opis\> | High/Med/Low |
+|----|------|-------------------|:---------:|
+| ZPI&#8209;5 | Core – Silnik generowania planu (WF-PLAN) | Epik obejmuje implementację kluczowego silnika aplikacji odpowiedzialnego za automatyczne generowanie harmonogramu zwiedzania na podstawie parametrów wejściowych użytkownika oraz danych z otwartych źródeł. Stanowi fundament systemu i jest realizowany w pierwszej kolejności jako Proof of Concept. | High |
+| ZPI&#8209;13 | Wizualizacja planu i mapa (WF-INFO) | Epik koncentruje się na czytelnej prezentacji wygenerowanego planu podróży w formie listy chronologicznej oraz interaktywnej mapy, umożliwiającej podgląd atrakcji i ich lokalizacji. | Medium |
+| ZPI&#8209;21 | Edycja planu i logistyka podróży (WF-MOD, WF-NOC) | Epik obejmuje podstawowe mechanizmy edycji wygenerowanego planu oraz obsługę logistyki dnia, takie jak usuwanie i przenoszenie atrakcji oraz start i koniec dnia z placeholderami noclegowymi. | Medium |
 
-> **Screenshot:** backlog epików z Jira – wklej tutaj (lub link).  
-> `![Backlog epików](./img/epics.png)`
+### Backlog produktu (Jira)
+
+![Backlog produktu - epiki i historyjki](./Backlog-Jira.png)
+*Rys. 1. Widok Product Backlog w narzędziu Jira z podziałem na epiki i historyjki użytkownika.*
+
 
 ### 2.2 Roadmapa (oś czasu – tylko epiki)
-Wstaw wizualizację (Gantt) dla epików – np. eksport z Jira lub zrzut ekranu.
 
-> **Screenshot:** roadmapa epików  
-> `![Roadmapa](./img/roadmap.png)`
+![Roadmap epiców](./Epic-Timeline.png)
+*Rys. 2. Widok Timeline Epików w narzędziu Jira.*
 
 ## 3. Część B – Planowanie Sprintu 1 (2 tygodnie) na podstawie PoC
 
@@ -103,8 +104,11 @@ Dla każdego wywołania:
 
 ### 3.3 Tablica sprintu
 
-> **Screenshot:** tablica sprintu (To Do / In Progress / Done)  
-> `![Tablica sprintu](./img/sprint-board.png)`
+![Tablica Sprintu](./Sprint-Table.png)
+*Rys. 3. Widok pierwszego Sprintu w narzędziu Jira.*
+
+![Cel Sprintu](./Sprint-Goal.png)
+*Rys. 4. Widok celu biznesowego Sprintu w narzędziu Jira.*
 
 ### 3.4 Definition of Done (DoD)
 
@@ -119,5 +123,5 @@ Zakładamy, że wdrożenie PoC zakończyło się niepowodzeniem. Poniżej spisuj
 ## 5. Załączniki
 
 ### 5.1 Linki
-- Jira project: \<link\>
-- Repozytorium: \<link\>
+- [**Jira projekt**](https://zpi-zad3.atlassian.net/jira/software/projects/ZPI/summary)
+- [**Repozytorium**](https://github.com/xDekann/zpi-lab)
