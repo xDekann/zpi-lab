@@ -26,7 +26,7 @@ Celem niniejszego raportu jest przedstawienie:
 ### Backlog produktu (Jira)
 
 ![Backlog produktu ? epiki i historyjki](./Backlog-Jira.png)
-*Rys. 1. Widok Product Backlog w narz?dziu Jira z podzia?em na epiki i historyjki u?ytkownika.*
+*Rys. 1. Widok Product Backlog w narzędziu Jira z podziałem na epiki i historyjki użytkownika.*
 
 
 ### 2.2 Roadmapa (oś czasu – tylko epiki)
