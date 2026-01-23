@@ -114,7 +114,6 @@ Dla każdego wywołania:
 
 **Epik:** PoC Core - silnik generowania planu (WF-PLAN)
 
----
 
 #### 1. Kryteria Funkcjonalne
 - **Pobieranie i filtrowanie danych:** System poprawnie pobiera dane POI i aplikuje filtry po tagach.
@@ -137,7 +136,6 @@ Dla każdego wywołania:
 
 **Epik:** Prezentacja harmonogramu i interaktywna mapa (WF-INFO)
 
----
 
 #### 1. Wygląd i Działanie (UI/UX)
 - **Mapa:** Interaktywna mapa (OpenStreetMap) poprawnie wyświetla trasę zwiedzania i wszystkie punkty (POI).
@@ -163,7 +161,6 @@ Dla każdego wywołania:
 
 **Epik:** Mechanizmy modyfikacji planu i zarządzanie logistyką (WF-MOD, WF-NOC)
 
----
 
 #### 1. Funkcje edycji (WF-MOD)
 - **Zmiana kolejności:** Użytkownik może swobodnie zmieniać kolejność atrakcji, a system ponownie tworzy trasę zwiedzania.
